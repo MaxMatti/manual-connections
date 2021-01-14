@@ -97,6 +97,9 @@ echo "The signature is OK.
 
 Trying to bind the port..."
 
+PORT=$port ./after_port_forwarding.sh
+systemd-notify --ready
+
 # Now we have all required data to create a request to bind the port.
 # We will repeat this request every 15 minutes, in order to keep the port
 # alive. The servers have no mechanism to track your activity, so they
