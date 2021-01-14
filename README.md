@@ -2,6 +2,13 @@
 
 This repository contains systemd service files to create native openvpn connections to the vpn provider known as pia.
 
+## Known Issues:
+
+* __this is not even pre-alpha, it's just a pile of code that "works on my machine" (sometimes)__
+* nothing is properly tested
+* openvpn isn't being stopped?
+* should really split server selection, openvpn and port forwarding into 3 separate units
+
 ## Requirements:
 
 * `namespaced-openvpn`
