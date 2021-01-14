@@ -15,6 +15,7 @@ Environment=PIA_PF=true
 Environment=MAX_LATENCY=0.05
 WorkingDirectory=/path/to/repo/
 ExecStart=/path/to/repo/connect_to_pia.sh
+NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
