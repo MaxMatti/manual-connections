@@ -13,7 +13,8 @@ Environment=PIA_AUTOCONNECT=openvpn_udp_strong
 Environment=PIA_DNS=true
 Environment=PIA_PF=true
 Environment=MAX_LATENCY=0.05
-ExecStart=/path/to/repo/get_region_and_token.sh
+WorkingDirectory=/path/to/repo/
+ExecStart=./get_region_and_token.sh
 
 [Install]
 WantedBy=multi-user.target
