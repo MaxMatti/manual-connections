@@ -39,7 +39,7 @@ if [[ ! $PIA_USER || ! $PIA_PASS ]]; then
   exit 1
 fi
 
-PIA_AUTOCONNECT=${PIA_AUTOCONNECT:"openvpn_udp_strong"}
+PIA_AUTOCONNECT=${PIA_AUTOCONNECT:openvpn_udp_strong}
 PIA_DNS=${PIA_DNS:true}
 PIA_PF=${PIA_PF:true}
 MAX_LATENCY=${MAX_LATENCY:-0.05}
