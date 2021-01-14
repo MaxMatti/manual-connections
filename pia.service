@@ -14,7 +14,7 @@ Environment=PIA_DNS=true
 Environment=PIA_PF=true
 Environment=MAX_LATENCY=0.05
 WorkingDirectory=/path/to/repo/
-ExecStart=./get_region_and_token.sh
+ExecStart=/path/to/repo/get_region_and_token.sh
 
 [Install]
 WantedBy=multi-user.target
