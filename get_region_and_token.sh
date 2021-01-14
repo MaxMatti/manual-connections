@@ -56,7 +56,6 @@ printServerLatency() {
     --write-out "%{time_connect}" \
     http://$serverIP:443)
   if [ $? -eq 0 ]; then
-    >&2 echo Got latency ${time}s for region: $regionName
     echo $time $regionID $serverIP
   fi
 }

@@ -1,0 +1,19 @@
+[Unit]
+Description=PIA OpenVPN connection to nearest server
+After=network.target
+BindsTo=netns@protected.service
+After=netns@protected.service
+JoinsNamespaceOf=netns@protected.service
+
+[Service]
+Type=notify
+Environment=PIA_USER=p1234567
+Environment=PIA_PASS=abcdefghijkl
+Environment=PIA_AUTOCONNECT=openvpn_udp_strong
+Environment=PIA_DNS=true
+Environment=PIA_PF=true
+Environment=MAX_LATENCY=0.05
+ExecStart=/path/to/repo/get_region_and_token.sh
+
+[Install]
+WantedBy=multi-user.target

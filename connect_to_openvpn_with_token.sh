@@ -32,7 +32,7 @@ function check_tool() {
 # Now we call the function to make sure we can use wg-quick, curl and jq.
 check_tool curl
 check_tool jq
-check_tool openvpn
+check_tool namespaced-openvpn
 
 # Check if manual PIA OpenVPN connection is already initialized.
 # Multi-hop is out of the scope of this repo, but you should be able to
@@ -46,7 +46,7 @@ if [[ "$adapter_check" != *"$should_read"* ]]; then
   if [ -f "$pid_filepath" ]; then
     old_pid="$( cat "$pid_filepath" )"
     old_pid_name="$( ps -p "$old_pid" -o comm= )"
-    if [[ $old_pid_name == 'openvpn' ]]; then
+    if [[ $old_pid_name == 'namespaced-openvpn' ]]; then
       echo
       echo It seems likely that process $old_pid is an OpenVPN connection
       echo that was established by using this script. Unless it is closed
@@ -166,7 +166,7 @@ fi
 #rm -f /opt/piavpn-manual/debug_info
 echo "
 Trying to start the OpenVPN connection..."
-openvpn --daemon \
+namespaced-openvpn --daemon \
   --config "/opt/piavpn-manual/pia.ovpn" \
   --writepid "/opt/piavpn-manual/pia_pid" \
   --log "/opt/piavpn-manual/debug_info" || exit 1
@@ -235,4 +235,4 @@ $ PIA_TOKEN=\"$PIA_TOKEN\" \\
 PIA_TOKEN=$PIA_TOKEN \
   PF_GATEWAY="$gateway_ip" \
   PF_HOSTNAME="$OVPN_HOSTNAME" \
-  ./port_forwarding.sh
+  ip netns exec protected ./port_forwarding.sh
